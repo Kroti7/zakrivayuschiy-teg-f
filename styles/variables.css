@@ -1,1 +1,39 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+
+:root {
+  --block-width: clamp(375px, 80%, 700px);
+  --heart-fill: #ff0000;
+  --weight-normal: normal;
+  --weight-bold: bold;
+
+  --color-main: #000;
+  --color-background: #fff;
+
+  --color-net: #d3d3d3;
+  --color-gradient-start: #E7E7E7;
+  --color-gradient-end: #1A1A1A;
+}
+
+:root.theme-dark {
+  --weight-normal: 465;
+  --weight-bold: 785;
+
+  --color-main: #00CC14;
+  --color-background: #000;
+
+  --color-net: #000;
+  --color-gradient-start: #007F0C;
+  --color-gradient-end: #004306;
+}
+
+:root.theme-light {
+  --weight-normal: normal;
+  --weight-bold: bold;
+
+  --color-main: #000;
+  --color-background: #fff;
+
+  --color-net: #d3d3d3;
+  --color-gradient-start: #E7E7E7;
+  --color-gradient-end: #1A1A1A;
+}

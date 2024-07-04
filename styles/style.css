@@ -14,7 +14,545 @@
 
 */
 
+/* Общие стили */
+
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+
+  color: var(--color-main);
+  background-color: var(--color-background);
+  background-image: 
+    repeating-linear-gradient(var(--color-net) 0, var(--color-net) 2px, transparent 2px, transparent 4px),
+    repeating-linear-gradient(90deg, var(--color-net) 0, var(--color-net) 2px, transparent 2px, transparent 4px),
+    linear-gradient( var(--color-gradient-start) 0, var(--color-gradient-end) 100%);
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Inter', sans-serif;
 }
+
+.page,
+.main,
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main {
+  gap: 50px;
+}
+
+.header,
+.img_container__tag,
+.button,
+.footer {
+  font-family: 'Press Start 2p', 'Courier New';
+}
+
+.header,
+.card,
+.footer {
+  background-color: var(--color-background);
+  border: solid 3px var(--color-main);
+}
+
+.header,
+.card {
+  width: var(--block-width);
+}
+
+/* Стили шапки */
+
+.header {
+  height: 327px;
+  margin: 100px 0;
+  padding-bottom: 25px;
+}
+
+@media (width > 375px) {
+  .header {
+    height: 368px;
+  }
+}
+
+.footer__main-title {
+  margin-top: auto;
+  font-size: clamp(3.0625rem, 2.6779rem + 2.0513vw, 4.0625rem);
+}
+
+.footer__desc-title {
+  font-size: clamp(0.875rem, 0.6587rem + 1.1538vw, 1.4375rem);
+  margin-top: 15px;
+  text-transform: uppercase;
+}
+
+.theme-menu {
+  margin-top: 25px;
+}
+
+.theme-menu__list {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.theme-menu__button {
+  font-size: 14px;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  text-transform: uppercase;
+  position: relative;
+  transition: opacity .3s ease;
+}
+
+.theme-menu__button[disabled] {
+  pointer-events: none;
+}
+.theme-menu__button:not([disabled]) {
+  cursor: pointer;
+}
+
+.theme-menu__button:not([disabled]):focus-visible {
+  outline: none;
+}
+
+.theme-menu__button:not([disabled]):hover,
+.theme-menu__button:not([disabled]):focus-visible {
+  opacity: 0.5;
+}
+
+.theme-menu__button[disabled] {
+  opacity: 0.5;
+}
+
+.theme-menu__button:not([disabled])::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  border-bottom: 2px solid var(--color-main);
+  transition-property: opacity, width;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+.theme-menu__button:not([disabled]):hover::after,
+.theme-menu__button:not([disabled]):focus-visible::after {
+  width: 100%;
+  opacity: 0.5;
+}
+
+.theme-menu__button[disabled]::before {
+  content: '▶';
+  position: absolute;
+  left: -15px;
+}
+
+/* Стили карточек */
+
+.card__title,
+.card__text {
+  font-size: 18px;
+}
+
+.card__title {
+  display: block;
+  padding: 5px 10px;
+}
+
+.card__img_container {
+  position: relative;
+  overflow: hidden;
+  border-top: 3px solid var(--color-main);
+  border-bottom: 3px solid var(--color-main); 
+}
+
+.img_container__tag {
+  z-index: 1;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  text-shadow: -2px 0 var(--color-background), 0 2px var(--color-background), 2px 0 var(--color-background), 0 -2px var(--color-background);
+  mix-blend-mode: hard-light;
+  opacity: 50%;
+}
+
+
+@supports((text-stroke: 1px #000) or (-webkit-text-stroke: 1px #000)) {
+  .img_container__tag {
+    -webkit-text-stroke: 2px var(--color-background);
+    text-stroke: 2px var(--color-background);
+    text-shadow: none;
+    paint-order: stroke fill;
+  }
+} 
+
+.card__content {
+  padding: 25px;
+}
+
+.img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Фильтры для изображений */
+.filter_1 {
+  filter: contrast(1.2);
+}
+
+.filter_2 {
+  filter: saturate(1.5) hue-rotate(-30deg);
+}
+
+.filter_3 {
+  filter: contrast(0.8);
+}
+
+.filter_4 {
+  filter: brightness(0.8) contranst(1.2);
+}
+
+.filter_5 {
+  filter: sepia(.5);
+}
+
+.filter_6 {
+  filter: sepia(80%) hue-rotate(190deg) saturate(500%);
+}
+
+
+.filter_7 {
+  filter: grayscale(0.2);
+}
+
+.card__content .card__text:not(:last-of-type) {
+  margin-bottom: 27px;
+}
+
+.card__content .card__text:last-of-type {
+  margin-bottom: 25px;
+}
+
+.button {
+  font-size: 14px;
+  background-color: var(--color-background);
+  border-radius: 0;
+  border-color: transparent;
+  display: flex;
+  align-items: center;
+}
+
+.card__like-container {
+  width: fit-content;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  margin-left: auto;
+}
+
+.like-icon,
+.card__like-button{
+  cursor: pointer;
+}
+
+.card__icon-button{
+  width: 50px; 
+  height: 50px;
+}
+
+.like-icon {
+  width: 100%;
+  height: 100%;
+}
+
+.like-icon .border {
+  fill: var(--color-main);
+}
+
+.card__like-button:focus,
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  border: 3px solid var(--color-main);
+  transition: border .3s ease;
+}
+
+.card__like-button,
+.popup__button{
+  position: relative;
+  display: block;
+  min-width: 130px;
+  min-height: 38px;
+  background-color: transparent;
+  border: solid 2px var(--color-main);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  overflow: hidden;
+  z-index: 2;
+  transition: color .5s;
+  box-shadow: 0 0 0 var(--color-main);
+}
+
+.card__like-button:focus-visible,
+.popup__button:focus-visible{
+  box-shadow: 3px 3px 0 var(--color-main);
+  transition: box-shadow .5s;
+}
+
+.card__like-button:after,
+.popup__button:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 110%;
+  background-color: var(--color-main);
+  z-index: -1;
+  transform: translateX(-100%);
+  transition: transform .5s;
+}
+
+.card__like-button:hover,
+.popup__button:hover {
+  color: var(--color-background);
+}
+
+.card__like-button:hover:after,
+.popup__button:hover:after {
+  transform: translateX(0%);
+}
+
+
+
+/* Стили подвала */
+
+.footer {
+  margin-top: 54px;
+  margin-bottom: 102px;
+  box-shadow: 0px 0px 0 var(--color-main);
+}
+
+.footer__button_svg {
+  width: 26px;
+  height: 26px;
+}
+
+.footer__button.button {
+  padding: 15px 20px;
+  gap: 8px;
+  outline: none;
+  cursor: pointer;
+}
+
+@media (width <= 375px) {
+  .footer__button.button {
+    flex-direction: column;
+  }
+}
+
+@media (width > 375px) {
+  .footer {
+    margin-top: 50px;
+
+  }
+
+  .footer__button_svg {
+    width: 21px;
+    height: 21px;
+  }
+}
+
+.footer:has(.footer__button:focus-visible) {
+  box-shadow: 3px 3px 0 var(--color-main);
+  transition: box-shadow .5s;
+}
+
+/* Стили попапа */
+
+.popup {
+  width: 341px;
+  height: 191px;
+  padding: 30px 40px;
+  border: solid 1px var(--color-main);
+  background-color: var(--color-background);
+  color: inherit;
+}
+
+.popup__wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (width > 375px) {
+  .popup {
+    padding: 30px;
+  }
+}
+
+.popup__content {
+  display: flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.popup__content_svg {
+  width: 39px;
+  height: 39px;
+}
+
+.popup__content_svg use{
+  width: 100%;
+  height: 100%;
+}
+
+.popup__content_text {
+  text-transform: uppercase;
+  font-family: 'Press Start 2p', 'Courier New';
+  font-size: 14px;
+}
+
+.popup__button {
+  min-height: 38px;
+  margin-top: auto;
+  border: solid 2px var(--color-main);
+  width: 100%;
+  border: solid 2px var(--color-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.popup::backdrop {
+  background-color: rgb(0 0 0 / 0.3);
+} 
+
+/* Анимации keyframes*/
+
+/* Активная тема в меню */
+@keyframes menu-active {
+  50% {
+    transform: translateX(-4px)
+  }
+
+  to {
+    transform: translateX(4px);
+  }
+}
+
+.theme-menu__button[disabled]::before {
+  animation-name: menu-active;
+  animation-duration: .5s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-timing-function: step-end;
+}
+
+/* Анимация сердца */
+.hearth .core {
+  transition: .1s fill;
+}
+
+.hearth .body {
+  transition: .3s fill;
+}
+
+/* ховер */
+.heart:hover .core {
+  fill: var(--color-main);
+  transition: .3s fill;
+}
+
+.heart:hover .body {
+  fill: var(--color-main);
+  transition: .6s fill;
+}
+
+/* зажатие */
+.heart:active .core {
+  fill: var(--heart-fill);
+  transition: .3s fill;
+}
+
+.heart:active .body {
+  fill: var(--heart-fill);
+  transition: .6s fill;
+}
+
+/* нажатие */
+
+.heart .sparks {
+  transform-origin: center;
+}
+
+@keyframes like-fill-red {
+  100% {
+    fill: var(--heart-fill);
+  }
+}
+
+@keyframes like-scale {
+  from {
+    scale: 1;
+  }
+
+  50% {
+    scale: 1.5;
+  }
+
+  to {
+    scale: 1;
+  }
+}
+
+@keyframes like-sparks {
+  from {
+    scale: 0.5;
+  }
+
+  20% {
+    fill: var(--heart-fill);
+  }
+
+  to {
+    scale: 1.1;
+    fill: transparent;
+  }
+}
+
+.like-icon.is-liked .core{
+  animation: like-fill-red 0.3s step-end forwards;
+}
+
+.like-icon.is-liked .body,
+.like-icon.is-liked .border {
+  animation: like-fill-red 0.3s 0.3s step-end forwards;
+}
+
+.like-icon.is-liked {
+  animation: like-scale 0.3s 0.6s ease;
+}
+
+.like-icon.is-liked .sparks{
+  animation: like-sparks 0.3s 0.9s ease;
+}
+
+/* Очень секретный стиль для секретов*/
+.secret {
+  color: var(--color-background);
+}
+
+/* Спасибо за проверку ❤ */
