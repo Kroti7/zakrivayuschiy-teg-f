@@ -17,10 +17,9 @@
 /* Общие стили */
 
 .page {
-  min-inline-size: 320px;
-  min-block-size: 100dvb;
 
   color: var(--color-main);
+  font-family: 'Inter', sans-serif;
   background-color: var(--color-background);
   background-image: 
     repeating-linear-gradient(var(--color-net) 0, var(--color-net) 2px, transparent 2px, transparent 4px),
@@ -28,7 +27,8 @@
     linear-gradient( var(--color-gradient-start) 0, var(--color-gradient-end) 100%);
   background-size: cover;
   background-attachment: fixed;
-  font-family: 'Inter', sans-serif;
+  min-inline-size: 320px;
+  min-block-size: 100dvb;
 }
 
 .page,
@@ -44,17 +44,16 @@
 }
 
 .header,
-.img_container__tag,
+.img-container__tag,
 .button,
 .footer {
   font-family: 'Press Start 2p', 'Courier New';
 }
 
 .header,
-.card,
-.footer {
-  background-color: var(--color-background);
+.card{
   border: solid 3px var(--color-main);
+  background-color: var(--color-background);
 }
 
 .header,
@@ -76,36 +75,37 @@
   }
 }
 
-.footer__main-title {
+.header__main-title {
   margin-top: auto;
-  font-size: clamp(3.0625rem, 2.6779rem + 2.0513vw, 4.0625rem);
+  margin-bottom: 17px;
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
 }
 
-.footer__desc-title {
-  font-size: clamp(0.875rem, 0.6587rem + 1.1538vw, 1.4375rem);
-  margin-top: 15px;
+.header__desc-title {
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
   text-transform: uppercase;
 }
 
 .theme-menu {
-  margin-top: 25px;
+  margin-top: 24px;
+  margin-right: -14px;
 }
 
 .theme-menu__list {
-  width: fit-content;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: fit-content;
 }
 
 .theme-menu__button {
-  font-size: 14px;
-  appearance: none;
-  border: none;
-  background-color: transparent;
-  text-transform: uppercase;
   position: relative;
+  border: none;
+  font-size: 14px;
+  text-transform: uppercase;
+  background-color: transparent;
   transition: opacity .3s ease;
+  appearance: none;
 }
 
 .theme-menu__button[disabled] {
@@ -136,8 +136,8 @@
   width: 0%;
   height: 1px;
   border-bottom: 2px solid var(--color-main);
-  transition-property: opacity, width;
   transition-duration: 0.3s;
+  transition-property: opacity, width;
   transition-timing-function: ease;
 }
 
@@ -165,29 +165,29 @@
   padding: 5px 10px;
 }
 
-.card__img_container {
+.card__img-container {
   position: relative;
-  overflow: hidden;
   border-top: 3px solid var(--color-main);
-  border-bottom: 3px solid var(--color-main); 
+  border-bottom: 3px solid var(--color-main);
+  overflow: hidden; 
 }
 
-.img_container__tag {
-  z-index: 1;
+.img-container__tag {
   position: absolute;
   top: 25px;
   right: 25px;
+  z-index: 1;
+  opacity: 50%;
   text-shadow: -2px 0 var(--color-background), 0 2px var(--color-background), 2px 0 var(--color-background), 0 -2px var(--color-background);
   mix-blend-mode: hard-light;
-  opacity: 50%;
 }
 
 
 @supports((text-stroke: 1px #000) or (-webkit-text-stroke: 1px #000)) {
-  .img_container__tag {
+  .img-container__tag {
+    text-shadow: none;
     -webkit-text-stroke: 2px var(--color-background);
     text-stroke: 2px var(--color-background);
-    text-shadow: none;
     paint-order: stroke fill;
   }
 } 
@@ -204,57 +204,51 @@
 }
 
 /* Фильтры для изображений */
-.filter_1 {
+.filter_contrast-med {
   filter: contrast(1.2);
 }
 
-.filter_2 {
+.filter_saturate-med_hue-30deg {
   filter: saturate(1.5) hue-rotate(-30deg);
 }
 
-.filter_3 {
+.filter_contrast-lower {
   filter: contrast(0.8);
 }
 
-.filter_4 {
-  filter: brightness(0.8) contranst(1.2);
+.filter_brightness-lower_contrast-higher {
+  filter: brightness(0.8) contrast(1.2);
 }
 
-.filter_5 {
+.filter_sepia-med {
   filter: sepia(.5);
 }
 
-.filter_6 {
+.filter_sepia-high_hue-190deg_saturate-very_high {
   filter: sepia(80%) hue-rotate(190deg) saturate(500%);
 }
 
-
-.filter_7 {
-  filter: grayscale(0.2);
+.filter_grayscale-low {
+  filter: grayscale(0.5);
 }
 
 .card__content .card__text:not(:last-of-type) {
   margin-bottom: 27px;
 }
 
-.card__content .card__text:last-of-type {
-  margin-bottom: 25px;
-}
-
 .button {
-  font-size: 14px;
-  background-color: var(--color-background);
-  border-radius: 0;
-  border-color: transparent;
   display: flex;
   align-items: center;
+  border-color: transparent;
+  border-radius: 0;
+  font-size: 14px;
+  background-color: var(--color-background);
 }
 
 .card__like-container {
-  width: fit-content;
   display: flex;
-  gap: 5px;
-  align-items: center;
+  align-items: flex-end;
+  width: fit-content;
   margin-left: auto;
 }
 
@@ -264,8 +258,9 @@
 }
 
 .card__icon-button{
-  width: 50px; 
-  height: 50px;
+  width: 55px;
+  margin-right: -2px;
+  margin-bottom: -5px;
 }
 
 .like-icon {
@@ -288,47 +283,53 @@
 }
 
 .card__like-button,
-.popup__button{
+.popup__button,
+.footer__button{
   position: relative;
+  z-index: 2;
   display: block;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   min-width: 130px;
   min-height: 38px;
-  background-color: transparent;
   border: solid 2px var(--color-main);
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  overflow: hidden;
-  z-index: 2;
-  transition: color .5s;
   box-shadow: 0 0 0 var(--color-main);
+  overflow: hidden;
+  background-color: transparent;
+  transition: color .5s;
 }
 
+
 .card__like-button:focus-visible,
-.popup__button:focus-visible{
+.popup__button:focus-visible,
+.footer__button:focus-visible {
   box-shadow: 3px 3px 0 var(--color-main);
   transition: box-shadow .5s;
 }
 
 .card__like-button:after,
-.popup__button:after {
+.popup__button:after,
+.footer__button:after {
   content: '';
   position: absolute;
+  z-index: -1;
   width: 100%;
   height: 110%;
   background-color: var(--color-main);
-  z-index: -1;
-  transform: translateX(-100%);
   transition: transform .5s;
+  transform: translateX(-100%);
 }
 
 .card__like-button:hover,
-.popup__button:hover {
+.popup__button:hover,
+.footer__button:hover {
   color: var(--color-background);
 }
 
 .card__like-button:hover:after,
-.popup__button:hover:after {
+.popup__button:hover:after,
+.footer__button:hover:after {
   transform: translateX(0%);
 }
 
@@ -339,7 +340,7 @@
 .footer {
   margin-top: 54px;
   margin-bottom: 102px;
-  box-shadow: 0px 0px 0 var(--color-main);
+    background-color: var(--color-background);
 }
 
 .footer__button_svg {
@@ -348,8 +349,8 @@
 }
 
 .footer__button.button {
-  padding: 15px 20px;
   gap: 8px;
+  padding: 15px 20px;
   outline: none;
   cursor: pointer;
 }
@@ -372,45 +373,40 @@
   }
 }
 
-.footer:has(.footer__button:focus-visible) {
-  box-shadow: 3px 3px 0 var(--color-main);
-  transition: box-shadow .5s;
-}
-
 /* Стили попапа */
 
 .popup {
   width: 341px;
   height: 191px;
-  padding: 30px 40px;
   border: solid 1px var(--color-main);
-  background-color: var(--color-background);
+  padding: 30px 40px;
   color: inherit;
-}
-
-.popup__wrapper {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  background-color: var(--color-background);
 }
 
 @media (width > 375px) {
   .popup {
+    width: 353px;
     padding: 30px;
   }
 }
 
+.popup__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
 .popup__content {
   display: flex;
-  align-items:center;
   justify-content: space-between;
+  align-items:center;
   gap: 20px;
 }
 
 .popup__content_svg {
-  width: 39px;
-  height: 39px;
+  max-width: 40px;
 }
 
 .popup__content_svg use{
@@ -419,136 +415,27 @@
 }
 
 .popup__content_text {
-  text-transform: uppercase;
   font-family: 'Press Start 2p', 'Courier New';
   font-size: 14px;
+  text-transform: uppercase;
+  line-height: 1.5;
 }
 
 .popup__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   min-height: 38px;
   margin-top: auto;
   border: solid 2px var(--color-main);
-  width: 100%;
   border: solid 2px var(--color-main);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
 }
 
 .popup::backdrop {
-  background-color: rgb(0 0 0 / 0.3);
+  background-color: rgb(0 0 0 / 0.75);
 } 
-
-/* Анимации keyframes*/
-
-/* Активная тема в меню */
-@keyframes menu-active {
-  50% {
-    transform: translateX(-4px)
-  }
-
-  to {
-    transform: translateX(4px);
-  }
-}
-
-.theme-menu__button[disabled]::before {
-  animation-name: menu-active;
-  animation-duration: .5s;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
-  animation-timing-function: step-end;
-}
-
-/* Анимация сердца */
-.hearth .core {
-  transition: .1s fill;
-}
-
-.hearth .body {
-  transition: .3s fill;
-}
-
-/* ховер */
-.heart:hover .core {
-  fill: var(--color-main);
-  transition: .3s fill;
-}
-
-.heart:hover .body {
-  fill: var(--color-main);
-  transition: .6s fill;
-}
-
-/* зажатие */
-.heart:active .core {
-  fill: var(--heart-fill);
-  transition: .3s fill;
-}
-
-.heart:active .body {
-  fill: var(--heart-fill);
-  transition: .6s fill;
-}
-
-/* нажатие */
-
-.heart .sparks {
-  transform-origin: center;
-}
-
-@keyframes like-fill-red {
-  100% {
-    fill: var(--heart-fill);
-  }
-}
-
-@keyframes like-scale {
-  from {
-    scale: 1;
-  }
-
-  50% {
-    scale: 1.5;
-  }
-
-  to {
-    scale: 1;
-  }
-}
-
-@keyframes like-sparks {
-  from {
-    scale: 0.5;
-  }
-
-  20% {
-    fill: var(--heart-fill);
-  }
-
-  to {
-    scale: 1.1;
-    fill: transparent;
-  }
-}
-
-.like-icon.is-liked .core{
-  animation: like-fill-red 0.3s step-end forwards;
-}
-
-.like-icon.is-liked .body,
-.like-icon.is-liked .border {
-  animation: like-fill-red 0.3s 0.3s step-end forwards;
-}
-
-.like-icon.is-liked {
-  animation: like-scale 0.3s 0.6s ease;
-}
-
-.like-icon.is-liked .sparks{
-  animation: like-sparks 0.3s 0.9s ease;
-}
 
 /* Очень секретный стиль для секретов*/
 .secret {

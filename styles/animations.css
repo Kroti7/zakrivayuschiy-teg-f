@@ -12,3 +12,110 @@
 
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 */
+
+/* Активная тема в меню */
+@keyframes menu-active {
+  50% {
+    transform: translateX(-4px);
+  }
+
+  to {
+    transform: translateX(4px);
+  }
+}
+
+.theme-menu__button[disabled]::before {
+  animation-name: menu-active;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-timing-function: step-end;
+  animation-duration: .5s;
+}
+
+/* Анимация сердца */
+.hearth .core {
+  transition: .03s fill;
+}
+
+.hearth .body {
+  transition: .3s fill;
+}
+
+/* ховер */
+.heart:hover .core {
+  fill: var(--color-main);
+  transition: .3s fill;
+}
+
+.heart:hover .body {
+  fill: var(--color-main);
+  transition: .3s .05s fill;
+}
+
+/* зажатие */
+.heart:active .core {
+  fill: var(--heart-fill);
+  transition: .3s fill;
+}
+
+.heart:active .body {
+  fill: var(--heart-fill);
+  transition: .3s .05s fill;
+}
+
+/* нажатие */
+
+.heart .sparks {
+  transform-origin: center;
+}
+
+@keyframes like-fill-red {
+  100% {
+    fill: var(--heart-fill);
+  }
+}
+
+@keyframes like-scale {
+  from {
+    scale: 1;
+  }
+
+  50% {
+    scale: 1.5;
+  }
+
+  to {
+    scale: 1;
+  }
+}
+
+@keyframes like-sparks {
+
+  50% {
+    fill: var(--heart-fill);
+  }
+
+  to {
+    fill: transparent;
+  }
+}
+
+.like-icon.is-liked .core{
+  animation: like-fill-red .3s ease forwards;
+}
+
+.like-icon.is-liked .body {
+  animation: like-fill-red .3s .05s ease forwards;
+}
+
+.like-icon.is-liked .border {
+  animation: like-fill-red .3s .06s ease forwards;
+}
+
+.like-icon.is-liked {
+  animation: like-scale .1s .3s ease-in;
+}
+
+.like-icon.is-liked .sparks{
+  animation: like-sparks .3s .3s ease;
+}
