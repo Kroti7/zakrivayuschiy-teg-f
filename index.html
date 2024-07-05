@@ -250,7 +250,7 @@
         <div class="card__content">
             <p class="card__text">Сейчас вы уже очень много знаете о вёрстке. Но это только начало. Во-первых, впереди ещё много материала про «красотищу». Во-вторых, с окончанием курса учёба не заканчивается. Вёрстка — это целый мир. И этот мир постоянно меняется. Познать его полностью не получится, но это тот случай, когда важен сам процесс познания. Ведь часто путь — и есть результат.</p>
             <p class="card__text">
-              <img src="./images/husk.png"> ...дальше было не легче
+              <img src="./images/husk.png" alt="смайлик с мертвой душой"> ...дальше было не легче
               <span class="secret">Вы когда-то пытались 3 дня сделать то, что нельзя было сделать, но вы этого не знали...Я пытался</span>
             </p> <!-- надеюсь хотя бы проверять это было весело -->
             <div class="card__like-container">
@@ -274,13 +274,12 @@
 
     <footer class="footer">
       <button type="button" class="button footer__button" 
-      type="button"
       onclick="window['popup-id'].showModal();"
       aria-controls="popup-id"
       aria-label="Открыть окно сохранения"
       >
         <svg class="footer__button_svg" viewBox="0 0 28 28">
-          <use href="./svg/floppy123.svg#floppy">
+          <use href="./svg/floppy123.svg#floppy"></use>
         </svg>
         <span class="footer__button_text">Сохранить на память</span>
       </button>
@@ -291,12 +290,11 @@
       <div class="popup__wrapper">
         <div class="popup__content">
           <svg class="popup__content_svg" viewBox="0 0 28 28">
-            <use href="./svg/floppy123.svg#floppy">
+            <use href="./svg/floppy123.svg#floppy"></use>
           </svg>
           <p class="popup__content_text">Вставьте дискету, чтобы продолжить</p>
         </div>
         <button type="button" class="popup__button button"
-        type="button"
         onclick="window['popup-id'].close();"
         aria-controls="popup-id"
         aria-label="Закрыть попап"
