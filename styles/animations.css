@@ -105,7 +105,7 @@
 }
 
 .like-icon.is-liked .body {
-  animation: like-fill-red .3s .05s ease forwards;
+  animation: like-fill-red .3s .01s ease forwards;
 }
 
 .like-icon.is-liked .border {
@@ -113,9 +113,9 @@
 }
 
 .like-icon.is-liked {
-  animation: like-scale .1s .3s ease-in;
+  animation: like-scale .3s .1s ease-in;
 }
 
 .like-icon.is-liked .sparks{
-  animation: like-sparks .3s .3s ease;
+  animation: like-sparks .3s .3s ease-in;
 }
